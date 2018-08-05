@@ -17,9 +17,17 @@ import Basket from '@app/component/basket';
 import VacanciesList from '@app/component/vacancy/list';
 import VacanciesPage from './';
 
+const componentProperties = {
+  history: {
+    push: jest.fn()
+  }
+};
+
 function getComponent() {
   return (
-    <VacanciesPage />
+    <VacanciesPage
+      {...componentProperties as any}
+    />
   );
 }
 
@@ -102,7 +110,7 @@ describe('the vacancies page component', () => {
   describe('when hitting the button to checkout the selected vacancy', () => {
     let storeActionsSpy: jest.SpyInstance;
 
-    beforeEach(() => {
+    beforeEach(async () => {
       storeActionsSpy = jest.spyOn(storeActions, 'checkoutVacancy');
       jest.spyOn(store, 'dispatch');
 
@@ -110,19 +118,26 @@ describe('the vacancies page component', () => {
         mocked: 'return_value_of_action',
         type: 'mocked_type'
       });
-    });
 
-    it('should update the app state with the selected vacancy', async () => {
+      componentProperties.history.push.mockClear();
+
       // Make sure a vacancy is selected
       await selectVacancy(instance);
 
+      // Submit the form
       instance.find('form').simulate('submit', { preventDefault: () => ({}) });
+    });
 
+    it('should update the app state with the selected vacancy', () => {
       expect(storeActionsSpy).toHaveBeenCalledWith(mockedSelectedVacancy);
       expect(store.dispatch).toHaveBeenCalledWith({
         mocked: 'return_value_of_action',
         type: 'mocked_type'
       });
+    });
+
+    it('should redirect the user to the confirmation page', () => {
+      expect(componentProperties.history.push).toHaveBeenCalledWith('/bevestigen');
     });
   });
 

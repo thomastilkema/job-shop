@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 import Basket from '@app/component/basket';
 import VacanciesList from '@app/component/vacancy/list';
@@ -12,9 +13,9 @@ interface IState {
   vacancies: IVacancy[];
 }
 
-class Component extends React.Component<{}, IState> {
+class Component extends React.Component<RouteComponentProps<{}>, IState> {
 
-  constructor(props: object) {
+  constructor(props: RouteComponentProps<{}>) {
     super(props);
 
     this.state = {
@@ -61,7 +62,11 @@ class Component extends React.Component<{}, IState> {
   private checkoutVacancy(event: React.FormEvent) {
     event.preventDefault();
 
+    // Update the app state with the vacancy
     store.dispatch(checkoutVacancy(this.state.selectedVacancy));
+
+    // Redirect to the confirmation page
+    this.props.history.push('/bevestigen');
   }
 
   private async retrieveVacancies() {

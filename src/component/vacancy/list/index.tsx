@@ -1,10 +1,11 @@
 import * as React from 'react';
 
-import { IVacancy } from '@app/interface';
+import { IVacancy, selectVacancyFunction } from '@app/interface';
 
 import VacancyListItem from '@app/component/vacancy/list-item';
 
 interface IProps {
+  onSelectVacancy: selectVacancyFunction;
   vacancies: IVacancy[];
 }
 
@@ -37,6 +38,7 @@ class Component extends React.Component<IProps, {}> {
       (
         <VacancyListItem
           key={index}
+          onSelectVacancy={this.props.onSelectVacancy}
           vacancy={vacancy}
         />
       )

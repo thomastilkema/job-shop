@@ -7,3 +7,5 @@ export interface IVacancy {
   originalPrice: number;
   period: number;
 }
+
+export type selectVacancyFunction = (vacancy: IVacancy) => void;

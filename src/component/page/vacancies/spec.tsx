@@ -43,22 +43,49 @@ describe('the vacancies page component', () => {
     }
 
     it('should be provided with an empty list by default', () => {
-      expect(getVacanciesList(instance).props).toEqual({
-        vacancies: []
-      });
+      expect(getVacanciesList(instance).props).toEqual(
+        jasmine.objectContaining({
+          vacancies: []
+        })
+      );
     });
 
     it('should in the end be provided with the vacancies coming from the backend', async () => {
+      // Wait for vacancies response to resolve
       await instance.update();
 
-      expect(getVacanciesList(instance).props).toEqual({
-        vacancies: mockedVacancies
-      });
+      expect(getVacanciesList(instance).props).toEqual(
+        jasmine.objectContaining({
+          vacancies: mockedVacancies
+        })
+      );
     });
   });
 
-  it('should display the shopping basket', () => {
-    expect(instance.find(Basket).exists()).toBe(true);
+  describe('when selecting a vacancy', () => {
+    function getBasket(wrapper: ShallowWrapper<VacanciesPage>) {
+      return wrapper.find(Basket).get(0);
+    }
+
+    it('should inform the basket about the selected vacancy', async () => {
+      expect(getBasket(instance).props).toEqual(
+        jasmine.objectContaining({
+          vacancy: null // null by default
+        })
+      );
+
+      const mockedSelectedVacancy = { ...mockedVacancies[0] };
+
+      // I'd rather actually mocked clicking a vacancy but I couldn't get it to work
+      (instance.instance() as any).setSelectedVacancy(mockedSelectedVacancy);
+      await instance.update();
+
+      expect(getBasket(instance).props).toEqual(
+        jasmine.objectContaining({
+          vacancy: mockedSelectedVacancy
+        })
+      );
+    });
   });
 
 });

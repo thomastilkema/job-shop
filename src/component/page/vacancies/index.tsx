@@ -7,6 +7,7 @@ import VacanciesList from '@app/component/vacancy/list';
 import { getVacancies } from '@app/utility';
 
 interface IState {
+  selectedVacancy: IVacancy;
   vacancies: IVacancy[];
 }
 
@@ -16,8 +17,11 @@ class Component extends React.Component<{}, IState> {
     super(props);
 
     this.state = {
+      selectedVacancy: null,
       vacancies: []
     };
+
+    this.setSelectedVacancy = this.setSelectedVacancy.bind(this);
   }
 
   public componentDidMount() {
@@ -33,13 +37,14 @@ class Component extends React.Component<{}, IState> {
           <h2>Introductiepakketten</h2>
 
           <VacanciesList
+            onSelectVacancy={this.setSelectedVacancy}
             vacancies={this.state.vacancies}
           />
         </div>
 
         <div className="column column--aside">
           <Basket
-            vacancy={this.state.vacancies[0]}
+            vacancy={this.state.selectedVacancy}
           />
         </div>
       </div>
@@ -50,6 +55,12 @@ class Component extends React.Component<{}, IState> {
     const vacancies = await getVacancies();
 
     this.setState({ vacancies });
+  }
+
+  private setSelectedVacancy(vacancy: IVacancy) {
+    this.setState({
+      selectedVacancy: vacancy
+    });
   }
 
 }

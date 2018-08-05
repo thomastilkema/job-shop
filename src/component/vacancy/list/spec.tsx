@@ -11,6 +11,7 @@ const mockedVacancies = getVacanciesMock();
 function getComponent(vacancies = mockedVacancies) {
   return (
     <VacancyList
+      onSelectVacancy={null}
       vacancies={vacancies}
     />
   );

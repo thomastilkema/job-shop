@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import './style.css';
 
-import { IVacancy } from '@app/interface';
+import { IVacancy, selectVacancyFunction } from '@app/interface';
 
 interface IProps {
+  onSelectVacancy: selectVacancyFunction;
   vacancy: IVacancy;
 }
 
@@ -12,13 +13,15 @@ class Component extends React.Component<IProps, {}> {
 
   constructor(props: IProps) {
     super(props);
+
+    this.onClickRow = this.onClickRow.bind(this);
   }
 
   public render() {
     const { vacancy } = this.props;
 
     return (
-      <tr className="cursor-pointer">
+      <tr className="cursor-pointer" onClick={this.onClickRow}>
         <td className="cell-radio">
           <input
             name="vacancy"
@@ -36,6 +39,10 @@ class Component extends React.Component<IProps, {}> {
 
   private getCurrentPrice(originalPrice: number, discount: number) {
     return originalPrice - discount;
+  }
+
+  private onClickRow(event: React.MouseEvent<HTMLTableRowElement>) {
+    this.props.onSelectVacancy(this.props.vacancy);
   }
 
 }

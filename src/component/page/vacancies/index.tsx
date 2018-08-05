@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import { IVacancy } from '@app/interface';
-import { getVacanciesMock } from '@root/mock';
 
 import Basket from '@app/component/basket';
 import VacanciesList from '@app/component/vacancy/list';
+import { getVacancies } from '@app/utility';
 
 interface IState {
   vacancies: IVacancy[];
@@ -16,8 +16,12 @@ class Component extends React.Component<{}, IState> {
     super(props);
 
     this.state = {
-      vacancies: getVacanciesMock()
+      vacancies: []
     };
+  }
+
+  public componentDidMount() {
+    this.retrieveVacancies();
   }
 
   public render() {
@@ -40,6 +44,12 @@ class Component extends React.Component<{}, IState> {
         </div>
       </div>
     );
+  }
+
+  private async retrieveVacancies() {
+    const vacancies = await getVacancies();
+
+    this.setState({ vacancies });
   }
 
 }

@@ -13,7 +13,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
-      '@app': path.resolve(__dirname, 'src')
+      '@app': path.resolve(__dirname, 'src'),
+      '@root': path.resolve(__dirname)
     }
   },
 

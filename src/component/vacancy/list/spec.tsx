@@ -18,7 +18,7 @@ function getComponent(vacancies = mockedVacancies) {
   );
 }
 
-describe('the vacancy-list-item component', () => {
+describe('the vacancy-list component', () => {
   let instance: ShallowWrapper<VacancyList>;
 
   beforeEach(() => {

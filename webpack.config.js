@@ -61,6 +61,7 @@ module.exports = {
 
   devServer: {
     contentBase: path.join(SRC_DIR, 'dist'),
+    historyApiFallback: true,
     open: true,
     port: 9000,
     watchContentBase: true

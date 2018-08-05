@@ -1,6 +1,8 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 
+import Basket from '@app/component/basket';
+import VacanciesList from '@app/component/vacancy/list';
 import VacanciesPage from './';
 
 function getComponent() {
@@ -24,12 +26,12 @@ describe('the vacancies page component', () => {
     expect(instance.find('h2').text()).toContain('Introductiepakketten');
   });
 
-  it('should have an area which displays the vacancies', () => {
-    expect(instance.text()).toContain('Hier zullen de vacaturepakketten worden getoond');
+  it('should display a list of vacancies', () => {
+    expect(instance.find(VacanciesList).exists()).toBe(true);
   });
 
-  it('should have an area which displays the shopping basket', () => {
-    expect(instance.text()).toContain('Hier zal de winkelwagen worden getoond');
+  it('should display the shopping basket', () => {
+    expect(instance.find(Basket).exists()).toBe(true);
   });
 
 });

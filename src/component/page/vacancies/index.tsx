@@ -1,6 +1,24 @@
 import * as React from 'react';
 
-class Component extends React.Component<{}, {}> {
+import { IVacancy } from '@app/interface';
+import { getVacanciesMock } from '@root/mock';
+
+import Basket from '@app/component/basket';
+import VacanciesList from '@app/component/vacancy/list';
+
+interface IState {
+  vacancies: IVacancy[];
+}
+
+class Component extends React.Component<{}, IState> {
+
+  constructor(props: object) {
+    super(props);
+
+    this.state = {
+      vacancies: getVacanciesMock()
+    };
+  }
 
   public render() {
     return (
@@ -10,11 +28,15 @@ class Component extends React.Component<{}, {}> {
 
           <h2>Introductiepakketten</h2>
 
-          <p>Hier zullen de vacaturepakketten worden getoond</p>
+          <VacanciesList
+            vacancies={this.state.vacancies}
+          />
         </div>
 
         <div className="column column--aside">
-          <p>Hier zal de winkelwagen worden getoond</p>
+          <Basket
+            vacancy={this.state.vacancies[0]}
+          />
         </div>
       </div>
     );

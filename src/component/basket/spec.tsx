@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { getVacancyMock } from '@root/mock';
 
+import VacancyDetails from '@app/component/vacancy/details';
 import Basket from './';
 
 const mockedVacancy = getVacancyMock();
@@ -27,7 +28,9 @@ describe('the basket component', () => {
   });
 
   it('should display the details of the provided vacancy', () => {
-    expect(instance.text()).toContain('Vacancy details here');
+    expect(instance.find(VacancyDetails).get(0).props).toEqual({
+      vacancy: mockedVacancy
+    });
   });
 
   it('should display a button which allows the user to continue to checkout the chosen vacancy', () => {

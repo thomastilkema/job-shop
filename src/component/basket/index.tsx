@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { IVacancy } from '@app/interface';
 
+import VacancyDetails from '@app/component/vacancy/details';
+
 interface IProps {
   vacancy: IVacancy;
 }
@@ -24,14 +26,18 @@ class Component extends React.Component<IProps, {}> {
     if (this.props.vacancy) {
       return (
         <React.Fragment>
-          <p>Vacancy details here</p>
+          <VacancyDetails
+            vacancy={this.props.vacancy}
+          />
 
-          <button
-            className="button button--white width-100"
-            type="submit"
-          >
-            Bestellen
-          </button>
+          <div className="pt--lg">
+            <button
+              className="button button--white width-100"
+              type="submit"
+            >
+              Bestellen
+            </button>
+          </div>
         </React.Fragment>
       );
     }

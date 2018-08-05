@@ -29,6 +29,8 @@ class Component extends React.Component<{}, IState> {
   }
 
   public render() {
+    const selectedVacancyId = this.getSelectedVacancyId();
+
     return (
       <div className="column-wrapper">
         <div className="column">
@@ -38,6 +40,7 @@ class Component extends React.Component<{}, IState> {
 
           <VacanciesList
             onSelectVacancy={this.setSelectedVacancy}
+            selectedVacancyId={selectedVacancyId}
             vacancies={this.state.vacancies}
           />
         </div>
@@ -61,6 +64,14 @@ class Component extends React.Component<{}, IState> {
     this.setState({
       selectedVacancy: vacancy
     });
+  }
+
+  private getSelectedVacancyId() {
+    if (!this.state.selectedVacancy) {
+      return null;
+    }
+
+    return this.state.selectedVacancy.id;
   }
 
 }

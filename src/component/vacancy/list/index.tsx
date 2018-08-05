@@ -6,6 +6,7 @@ import VacancyListItem from '@app/component/vacancy/list-item';
 
 interface IProps {
   onSelectVacancy: selectVacancyFunction;
+  selectedVacancyId: number;
   vacancies: IVacancy[];
 }
 
@@ -38,11 +39,16 @@ class Component extends React.Component<IProps, {}> {
       (
         <VacancyListItem
           key={index}
+          isSelected={this.isSelected(vacancy)}
           onSelectVacancy={this.props.onSelectVacancy}
           vacancy={vacancy}
         />
       )
     );
+  }
+
+  private isSelected(vacancy: IVacancy) {
+    return Boolean(this.props.selectedVacancyId) && this.props.selectedVacancyId === vacancy.id;
   }
 }
 

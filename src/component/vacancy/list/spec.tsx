@@ -12,6 +12,7 @@ function getComponent(vacancies = mockedVacancies) {
   return (
     <VacancyList
       onSelectVacancy={null}
+      selectedVacancyId={1}
       vacancies={vacancies}
     />
   );

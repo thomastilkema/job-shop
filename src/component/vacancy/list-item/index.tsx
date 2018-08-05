@@ -5,6 +5,7 @@ import './style.css';
 import { IVacancy, selectVacancyFunction } from '@app/interface';
 
 interface IProps {
+  isSelected: boolean;
   onSelectVacancy: selectVacancyFunction;
   vacancy: IVacancy;
 }
@@ -19,11 +20,17 @@ class Component extends React.Component<IProps, {}> {
 
   public render() {
     const { vacancy } = this.props;
+    const classNames = 'cursor-pointer' + ( this.props.isSelected ? ' table__active' : '' );
 
     return (
-      <tr className="cursor-pointer" onClick={this.onClickRow}>
+      <tr
+        className={classNames}
+        onClick={this.onClickRow}
+      >
         <td className="cell-radio">
           <input
+            checked={this.props.isSelected}
+            onChange={this.onChangeRadio}
             name="vacancy"
             type="radio"
             value={vacancy.id}
@@ -43,6 +50,11 @@ class Component extends React.Component<IProps, {}> {
 
   private onClickRow(event: React.MouseEvent<HTMLTableRowElement>) {
     this.props.onSelectVacancy(this.props.vacancy);
+  }
+
+  private onChangeRadio(event: React.ChangeEvent<HTMLInputElement>) {
+    // Prevent executing this event because it will be handled by this.onClickRow()
+    event.stopPropagation();
   }
 
 }

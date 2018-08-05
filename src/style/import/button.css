@@ -1,0 +1,21 @@
+.button {
+  border-width: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-size: var(--font-size-text);
+  padding: var(--spacing-md);
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button--primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.button--white {
+  background-color: #fff;
+  color: var(--color-primary);
+}

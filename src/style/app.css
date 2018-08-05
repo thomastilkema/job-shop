@@ -6,6 +6,7 @@
 @import './import/helper.css';
 @import './import/spacing.css';
 
+@import './import/button.css';
 @import './import/column.css';
 @import './import/container.css';
 @import './import/heading.css';

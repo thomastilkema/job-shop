@@ -24,10 +24,10 @@ class Component extends React.Component<IProps, {}> {
     if (this.props.vacancy) {
       return (
         <React.Fragment>
-          Vacancy details here
+          <p>Vacancy details here</p>
 
           <button
-            className="button button--white"
+            className="button button--white width-100"
             type="submit"
           >
             Bestellen

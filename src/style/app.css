@@ -3,4 +3,5 @@
 @import './import/reset.css';
 @import './import/generic.css';
 
+@import './import/column.css';
 @import './import/container.css';

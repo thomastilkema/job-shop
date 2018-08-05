@@ -26,3 +26,11 @@ This repository is the result of an assessment which requires to setup a small R
 | ✔ | Cover code by unit tests (100%)
 | ✔ | All dynamic data should be loaded from a JSON file. You can structure the JSON as you want.
 | ✔ | Optional: Make use of state management with Redux
+
+## Next steps (if I had more time)
+* Add the basket totals
+* Display spinner while requesting vacancies
+* Process possible errors coming back from the api
+* Use container and presentational components
+* Better structure for css files (group files in folders)
+* Selected vacancy: save to and read from local storage

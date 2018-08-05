@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import '@app/style/app.css';
 
@@ -9,7 +10,9 @@ class Component extends React.Component<{}, {}> {
   public render() {
     return (
       <div className="container">
-        <VacanciesPage />
+        <BrowserRouter>
+          <Route exact={true} path="/" component={VacanciesPage} />
+        </BrowserRouter>
       </div>
     );
   }

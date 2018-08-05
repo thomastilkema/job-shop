@@ -1,5 +1,6 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import VacanciesPage from '@app/component/page/vacancies';
 import App from './';
@@ -21,8 +22,12 @@ describe('the app component', () => {
     expect(instance.hasClass('container')).toBe(true);
   });
 
-  it('should display the vacancies page', () => {
-    expect(instance.contains(<VacanciesPage />)).toBe(true);
+  it('should have support for routes', () => {
+    expect(instance.find(BrowserRouter).exists()).toBe(true);
+  });
+
+  it('should add a route for the vacancies page', () => {
+    expect(instance.contains(<Route exact={true} path="/" component={VacanciesPage} />)).toBe(true);
   });
 
 });

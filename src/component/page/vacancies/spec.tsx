@@ -1,12 +1,17 @@
 jest.mock('@app/utility');
+jest.mock('@app/store');
+jest.mock('@app/store/action');
 
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 
+import { store } from '@app/store';
+import * as storeActions from '@app/store/action';
 import * as utility from '@app/utility';
 import { getVacanciesMock } from '@root/mock';
 
 const mockedVacancies = getVacanciesMock();
+const mockedSelectedVacancy = { ...mockedVacancies[0] };
 
 import Basket from '@app/component/basket';
 import VacanciesList from '@app/component/vacancy/list';
@@ -16,6 +21,12 @@ function getComponent() {
   return (
     <VacanciesPage />
   );
+}
+
+async function selectVacancy(wrapper: ShallowWrapper<VacanciesPage>) {
+  // I'd rather actually mocked clicking a vacancy but I couldn't get it to work
+  (wrapper.instance() as any).setSelectedVacancy(mockedSelectedVacancy);
+  await wrapper.update();
 }
 
 describe('the vacancies page component', () => {
@@ -78,17 +89,40 @@ describe('the vacancies page component', () => {
         })
       );
 
-      const mockedSelectedVacancy = { ...mockedVacancies[0] };
-
-      // I'd rather actually mocked clicking a vacancy but I couldn't get it to work
-      (instance.instance() as any).setSelectedVacancy(mockedSelectedVacancy);
-      await instance.update();
+      await selectVacancy(instance);
 
       expect(getBasket(instance).props).toEqual(
         jasmine.objectContaining({
           vacancy: mockedSelectedVacancy
         })
       );
+    });
+  });
+
+  describe('when hitting the button to checkout the selected vacancy', () => {
+    let storeActionsSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      storeActionsSpy = jest.spyOn(storeActions, 'checkoutVacancy');
+      jest.spyOn(store, 'dispatch');
+
+      storeActionsSpy.mockReturnValue({
+        mocked: 'return_value_of_action',
+        type: 'mocked_type'
+      });
+    });
+
+    it('should update the app state with the selected vacancy', async () => {
+      // Make sure a vacancy is selected
+      await selectVacancy(instance);
+
+      instance.find('form').simulate('submit', { preventDefault: () => ({}) });
+
+      expect(storeActionsSpy).toHaveBeenCalledWith(mockedSelectedVacancy);
+      expect(store.dispatch).toHaveBeenCalledWith({
+        mocked: 'return_value_of_action',
+        type: 'mocked_type'
+      });
     });
   });
 

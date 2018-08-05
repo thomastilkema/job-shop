@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import { IVacancy } from '@app/interface';
-
 import Basket from '@app/component/basket';
 import VacanciesList from '@app/component/vacancy/list';
+import { IVacancy } from '@app/interface';
+import { store } from '@app/store';
+import { checkoutVacancy } from '@app/store/action';
 import { getVacancies } from '@app/utility';
 
 interface IState {
@@ -21,6 +22,7 @@ class Component extends React.Component<{}, IState> {
       vacancies: []
     };
 
+    this.checkoutVacancy = this.checkoutVacancy.bind(this);
     this.setSelectedVacancy = this.setSelectedVacancy.bind(this);
   }
 
@@ -34,7 +36,7 @@ class Component extends React.Component<{}, IState> {
     const selectedVacancyId = this.getSelectedVacancyId();
 
     return (
-      <div className="column-wrapper">
+      <form className="column-wrapper" onSubmit={this.checkoutVacancy}>
         <div className="column">
           <h1>Online vacatures</h1>
 
@@ -52,8 +54,14 @@ class Component extends React.Component<{}, IState> {
             vacancy={this.state.selectedVacancy}
           />
         </div>
-      </div>
+      </form>
     );
+  }
+
+  private checkoutVacancy(event: React.FormEvent) {
+    event.preventDefault();
+
+    store.dispatch(checkoutVacancy(this.state.selectedVacancy));
   }
 
   private async retrieveVacancies() {

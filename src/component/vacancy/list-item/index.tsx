@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import './style.css';
+
 import { IVacancy } from '@app/interface';
 
 interface IProps {
@@ -16,8 +18,8 @@ class Component extends React.Component<IProps, {}> {
     const { vacancy } = this.props;
 
     return (
-      <tr>
-        <td>
+      <tr className="cursor-pointer">
+        <td className="cell-radio">
           <input
             name="vacancy"
             type="radio"
@@ -25,9 +27,9 @@ class Component extends React.Component<IProps, {}> {
           />
         </td>
         <td>{vacancy.name}</td>
-        <td>{vacancy.period}</td>
-        <td>&euro; {vacancy.originalPrice}</td>
-        <td>&euro; {this.getCurrentPrice(vacancy.originalPrice, vacancy.discount)}</td>
+        <td className="text-right">{vacancy.period}</td>
+        <td className="text-right">&euro; <span className="line-through">{vacancy.originalPrice}</span></td>
+        <td className="text-right">&euro; {this.getCurrentPrice(vacancy.originalPrice, vacancy.discount)}</td>
       </tr>
     );
   }

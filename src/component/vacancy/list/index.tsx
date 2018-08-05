@@ -16,13 +16,13 @@ class Component extends React.Component<IProps, {}> {
     }
 
     return (
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th scope="col" colSpan={2}>Abonnement</th>
-            <th scope="col">Periode</th>
-            <th scope="col">Normale prijs</th>
-            <th scope="col">Prijs</th>
+            <th className="text-right" scope="col">Periode</th>
+            <th className="text-right" scope="col">Normale prijs</th>
+            <th className="text-right" scope="col">Prijs</th>
           </tr>
         </thead>
         <tbody>

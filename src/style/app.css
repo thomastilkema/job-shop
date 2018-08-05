@@ -3,5 +3,10 @@
 @import './import/reset.css';
 @import './import/generic.css';
 
+@import './import/helper.css';
+@import './import/spacing.css';
+
 @import './import/column.css';
 @import './import/container.css';
+@import './import/heading.css';
+@import './import/table.css';

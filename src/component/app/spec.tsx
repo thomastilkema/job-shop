@@ -1,6 +1,7 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 
+import VacanciesPage from '@app/component/page/vacancies';
 import App from './';
 
 function getComponent() {
@@ -20,8 +21,8 @@ describe('the app component', () => {
     expect(instance.hasClass('container')).toBe(true);
   });
 
-  it('should tell that this is the main app component', () => {
-    expect(instance.text()).toContain('This is the main app');
+  it('should display the vacancies page', () => {
+    expect(instance.contains(<VacanciesPage />)).toBe(true);
   });
 
 });

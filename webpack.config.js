@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -48,7 +49,14 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
-    })
+    }),
+
+    new CopyWebpackPlugin([
+      {
+        from: './data', // <rootDir>/data
+        to: './data'    // <rootDir>/dist/data
+      }
+    ])
   ],
 
   devServer: {

@@ -1,0 +1,63 @@
+{
+  "vacancies": [
+    {
+      "id": 1,
+      "name": "Simpele vacature",
+      "period": 15,
+      "originalPrice": 49,
+      "discount": 5,
+      "image": "https://dummyimage.com/160x100/54a0b5/ffffff&text=Simpele+vacature",
+      "features": [
+        "Na plaatsing volgende dag zichtbaar",
+        "Goed bereik: LBO/VMBO"
+      ]
+    },
+
+    {
+      "id": 2,
+      "name": "Standaard vacature",
+      "period": 60,
+      "originalPrice": 99,
+      "discount": 10,
+      "image": "https://dummyimage.com/120x76/54a0b5/ffffff&text=Standaard+vacature",
+      "features": [
+        "Na plaatsing binnen een uur zichtbaar",
+        "Goed bereik: LBO/VMBO",
+        "Optie tot tonen van YouTube- of Vimeo-video",
+        "Optie tot opgeven vacature in meerdere talen"
+      ]
+    },
+
+    {
+      "id": 3,
+      "name": "2 x Standaard vacature",
+      "period": 60,
+      "originalPrice": 169,
+      "discount": 40,
+      "image": "https://dummyimage.com/120x76/54a0b5/ffffff&text=2+x+Standaard+vacature",
+      "features": [
+        "Na plaatsing direct zichtbaar",
+        "Goed bereik: LBO/VMBO",
+        "Optie tot tonen van YouTube- of Vimeo-video",
+        "Optie tot opgeven vacature in meerdere talen"
+      ]
+    },
+
+    {
+      "id": 4,
+      "name": "All-in vacature",
+      "period": 60,
+      "originalPrice": 299,
+      "discount": 50,
+      "image": "https://dummyimage.com/150x110/54a0b5/ffffff&text=All-in+vacature",
+      "features": [
+        "Na plaatsing direct zichtbaar",
+        "Goed bereik: LBO/VMBO",
+        "Optie tot tonen van YouTube- of Vimeo-video",
+        "Optie tot opgeven vacature in meerdere talen",
+        "Krijgt automatisch label \"Topbaan\"",
+        "Verschijnt een week lang boven alle zoekresultaten"
+      ]
+    }
+  ]
+}

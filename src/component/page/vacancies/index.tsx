@@ -30,6 +30,8 @@ class Component extends React.Component<RouteComponentProps<{}>, IState> {
   public componentDidMount() {
     document.title = 'Vacaturepakketten';
 
+    this.setSelectedVacancy(store.getState().checkoutVacancy);
+
     this.retrieveVacancies();
   }
 

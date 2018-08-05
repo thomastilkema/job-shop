@@ -31,6 +31,10 @@ function getComponent() {
   );
 }
 
+function getBasket(wrapper: ShallowWrapper<VacanciesPage>) {
+  return wrapper.find(Basket).get(0);
+}
+
 async function selectVacancy(wrapper: ShallowWrapper<VacanciesPage>) {
   // I'd rather actually mocked clicking a vacancy but I couldn't get it to work
   (wrapper.instance() as any).setSelectedVacancy(mockedSelectedVacancy);
@@ -39,13 +43,21 @@ async function selectVacancy(wrapper: ShallowWrapper<VacanciesPage>) {
 
 describe('the vacancies page component', () => {
   let instance: ShallowWrapper<VacanciesPage>;
+  let getStateSpy: jest.SpyInstance;
   let getVacanciesSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    instance = shallow(getComponent());
+    getStateSpy = jest.spyOn(store, 'getState');
     getVacanciesSpy = jest.spyOn(utility, 'getVacancies');
 
+    getStateSpy.mockReturnValue({
+      checkoutVacancy: {
+        mocked: 'checkout_vacancy_from_state'
+      }
+    });
     getVacanciesSpy.mockReturnValue(Promise.resolve(mockedVacancies));
+
+    instance = shallow(getComponent());
   });
 
   it('should update the browser title', () => {
@@ -85,18 +97,18 @@ describe('the vacancies page component', () => {
     });
   });
 
+  it('it should by default set the vacancy which the user wants to checkout as the selected vacancy', () => {
+    expect(getBasket(instance).props).toEqual(
+      jasmine.objectContaining({
+        vacancy: {
+          mocked: 'checkout_vacancy_from_state'
+        }
+      })
+    );
+  });
+
   describe('when selecting a vacancy', () => {
-    function getBasket(wrapper: ShallowWrapper<VacanciesPage>) {
-      return wrapper.find(Basket).get(0);
-    }
-
     it('should inform the basket about the selected vacancy', async () => {
-      expect(getBasket(instance).props).toEqual(
-        jasmine.objectContaining({
-          vacancy: null // null by default
-        })
-      );
-
       await selectVacancy(instance);
 
       expect(getBasket(instance).props).toEqual(

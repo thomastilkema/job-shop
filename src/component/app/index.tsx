@@ -6,7 +6,9 @@ class Component extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <p>This is the main app</p>
+      <div className="container">
+        <p>This is the main app</p>
+      </div>
     );
   }
 

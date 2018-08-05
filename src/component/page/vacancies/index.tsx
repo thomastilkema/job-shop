@@ -25,6 +25,8 @@ class Component extends React.Component<{}, IState> {
   }
 
   public componentDidMount() {
+    document.title = 'Vacaturepakketten';
+
     this.retrieveVacancies();
   }
 

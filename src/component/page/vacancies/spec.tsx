@@ -29,6 +29,10 @@ describe('the vacancies page component', () => {
     getVacanciesSpy.mockReturnValue(Promise.resolve(mockedVacancies));
   });
 
+  it('should update the browser title', () => {
+    expect(document.title).toBe('Vacaturepakketten');
+  });
+
   it('should tell what the main content of this page is about', () => {
     expect(instance.find('h1').text()).toContain('Online vacatures');
   });

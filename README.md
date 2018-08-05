@@ -14,7 +14,7 @@ This repository is the result of an assessment which requires to setup a small R
 | ✔ | Use Typescript
 |   | Use Redux to keep track of state
 |   | The confirmation page should have its own uri, for example `/bevestigen`
-|   | Each page should have its own page title
+| ✔ | Each page should have its own page title
 
 ## Requirements
 |   | Requirement

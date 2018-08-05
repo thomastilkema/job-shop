@@ -1,0 +1,5 @@
+.vacancy-confirm-details {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: var(--spacing-md);
+}

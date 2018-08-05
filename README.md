@@ -19,7 +19,7 @@ This repository is the result of an assessment which requires to setup a small R
 ## Requirements
 |   | Requirement
 |---|-------------
-|   | When you select a product, the cart should be updated
+| ✔ | When you select a product, the cart should be updated
 |   | A click on `Bestellen` will show a confirmation page with selected product
 | ✔ | Use ReactJS
 | ✔ | The app should be responsive

@@ -1,0 +1,8 @@
+html {
+  --font-size-text: .9rem;
+
+  --color-primary: #4fb6c9;
+  --color-text: #525252;
+
+  --spacing-md: 16px;
+}

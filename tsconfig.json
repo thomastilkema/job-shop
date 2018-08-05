@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "jsx": "react",
+    "sourceMap": true,
+    "noImplicitAny": true,
+
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

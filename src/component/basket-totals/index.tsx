@@ -19,8 +19,8 @@ class Component extends React.Component<IProps, {}> {
             <td className="text-right">&euro; - {this.getTotalDiscount()}</td>
           </tr>
           <tr>
-            <th scope="row">Totaal</th>
-            <td className="text-right">&euro; {this.getTotalPrice()}</td>
+            <th className="text-bold" scope="row">Totaal</th>
+            <td className="text-bold text-right">&euro; {this.getTotalPrice()}</td>
           </tr>
         </tfoot>
         <tbody>

@@ -3,3 +3,7 @@
   padding-bottom: var(--spacing-sm);
   padding-top: var(--spacing-sm);
 }
+
+.table--vacancies-list thead {
+  color: #aaa;
+}

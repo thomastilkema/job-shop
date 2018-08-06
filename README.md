@@ -28,7 +28,6 @@ This repository is the result of an assessment which requires to setup a small R
 | ✔ | Optional: Make use of state management with Redux
 
 ## Next steps (if I had more time)
-* Add the basket totals
 * Display spinner while requesting vacancies
 * Process possible errors coming back from the api
 * Use container and presentational components

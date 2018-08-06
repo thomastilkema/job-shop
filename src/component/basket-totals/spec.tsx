@@ -49,7 +49,7 @@ describe('the basket component', () => {
   });
 
   it('should display the total discount price', () => {
-    expect(getTableCellText(instance, 0, 1)).toBe('€ - 25');
+    expect(getTableCellText(instance, 0, 1)).toBe('- € 25');
   });
 
   it('should display the total price', () => {

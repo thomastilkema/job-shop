@@ -16,7 +16,7 @@ class Component extends React.Component<IProps, {}> {
         <tfoot>
           <tr>
             <th scope="row">Korting</th>
-            <td className="text-right">&euro; - {this.getTotalDiscount()}</td>
+            <td className="text-right">- &euro; {this.getTotalDiscount()}</td>
           </tr>
           <tr>
             <th className="text-bold" scope="row">Totaal</th>

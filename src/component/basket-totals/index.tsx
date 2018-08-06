@@ -39,12 +39,16 @@ class Component extends React.Component<IProps, {}> {
     ));
   }
 
+  private getTotalOfProperty(propertyName: 'discount' | 'originalPrice') {
+    return this.props.vacancies.reduce((totalValue, currentVacancy: IVacancy) => totalValue + Number(currentVacancy[propertyName]), 0);
+  }
+
   private getTotalDiscount() {
-    return this.props.vacancies.reduce((totalValue, currentVacancy) => totalValue + Number(currentVacancy.discount), 0);
+    return this.getTotalOfProperty('discount');
   }
 
   private getTotalOriginalPrice() {
-    return this.props.vacancies.reduce((totalValue, currentVacancy) => totalValue + Number(currentVacancy.originalPrice), 0);
+    return this.getTotalOfProperty('originalPrice');
   }
 
   private getTotalPrice() {

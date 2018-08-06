@@ -1,5 +1,6 @@
 .vacancy-details__image-placeholder {
   background-color: #fff;
+  min-height: 80px;
   padding: var(--spacing-md);
   text-align: center;
 }

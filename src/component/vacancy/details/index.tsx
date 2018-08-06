@@ -18,13 +18,14 @@ class Component extends React.Component<IProps, {}> {
         <div className="vacancy-details__image-placeholder">
           <img
             alt={vacancy.name}
+            className="margin-auto"
             src={vacancy.image}
           />
         </div>
 
         <div className="pt--lg">
           <h3>{vacancy.name}</h3>
-          <ul>
+          <ul className="list-square">
             <li>{vacancy.period} dagen online</li>
             {this.renderFeatures()}
           </ul>

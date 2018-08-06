@@ -4,6 +4,7 @@ html {
   --color-primary: #4fb6c9;
   --color-text: #525252;
 
+  --spacing-xs: 4px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
 }

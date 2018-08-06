@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import './style.css';
+
 import { IVacancy, selectVacancyFunction } from '@app/interface';
 
 import VacancyListItem from '@app/component/vacancy/list-item';
@@ -18,7 +20,7 @@ class Component extends React.Component<IProps, {}> {
     }
 
     return (
-      <table className="table">
+      <table className="table table--vacancies-list">
         <thead>
           <tr>
             <th scope="col" colSpan={2}>Abonnement</th>

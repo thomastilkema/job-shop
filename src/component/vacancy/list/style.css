@@ -1,0 +1,5 @@
+.table--vacancies-list td,
+.table--vacancies-list th {
+  padding-bottom: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+}

@@ -9,7 +9,7 @@ th {
 
 .table td,
 .table th {
-  padding: 8px 4px;
+  padding: var(--spacing-xs);
 }
 
 .table__active {

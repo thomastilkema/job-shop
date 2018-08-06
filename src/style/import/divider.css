@@ -1,0 +1,10 @@
+.divider {
+  border-top: 1px solid transparent;
+  height: 1px;
+  margin: var(--spacing-md) 0;
+}
+
+
+.divider--white {
+  border-color: #fff;
+}

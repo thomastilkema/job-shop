@@ -43,13 +43,15 @@ class Component extends React.Component<RouteComponentProps<{}>, IState> {
         <div className="column">
           <h1>Online vacatures</h1>
 
-          <h2>Introductiepakketten</h2>
+          <h2 className="pt--md">Introductiepakketten</h2>
 
-          <VacanciesList
-            onSelectVacancy={this.setSelectedVacancy}
-            selectedVacancyId={selectedVacancyId}
-            vacancies={this.state.vacancies}
-          />
+          <div className="pt--lg">
+            <VacanciesList
+              onSelectVacancy={this.setSelectedVacancy}
+              selectedVacancyId={selectedVacancyId}
+              vacancies={this.state.vacancies}
+            />
+          </div>
         </div>
 
         <div className="column column--aside">
